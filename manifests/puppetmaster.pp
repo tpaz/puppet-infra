@@ -1,12 +1,13 @@
 class infra::puppetmaster (
-  $answers = 'puppet:///modules/infra/puppetmaster.answers',
-  $puppetdb_server = 'puppetdb.localdomain'
+  $answers = 'puppet-infra/puppetmaster.answers.erb',
+  $domain_name = $infra::params::domain_name,
+  $puppetdb_server = "puppetdb.${domain_name}"
 ) {
 
   # Provide the answerfile for the puppet installer
   file { '/etc/foreman/foreman-installer-answers.yaml':
     ensure  => present,
-    source  => $answers,
+    content => template($answers),
     owner   => root,
     group   => root,
     mode    => '0600',
