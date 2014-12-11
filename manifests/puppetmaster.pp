@@ -1,8 +1,8 @@
 class infra::puppetmaster (
-  $answers = 'puppet-infra/puppetmaster.answers.erb',
-  $domain_name = $infra::params::domain_name,
+  $answers = 'infra/puppetmaster.answers.erb',
+  $domain_name = $infra::domain_name,
   $puppetdb_server = "puppetdb.${domain_name}"
-) {
+) inherits infra {
 
   # Provide the answerfile for the puppet installer
   file { '/etc/foreman/foreman-installer-answers.yaml':

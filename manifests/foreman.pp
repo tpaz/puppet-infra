@@ -1,5 +1,5 @@
 class infra::foreman (
-  $answers = 'puppet-infra/foreman.answers.erb'
+  $answers = 'infra/foreman.answers.erb'
 ) {
 
   # Provide the answerfile for the puppet installer
